@@ -12,7 +12,7 @@ class AppHome extends StatelessWidget {
         centerTitle: true,
         elevation: 0.0,
         actions: <Widget>[
-          Icon(Icons.account_circle),
+          Icon(Icons.account_circle, size: 30,),
           SizedBox(width: 10,)
         ],
       ),
