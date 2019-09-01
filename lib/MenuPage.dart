@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
 class MenuPage extends StatelessWidget {
   final String appbarText;
@@ -27,9 +28,19 @@ class MenuPageBody extends StatefulWidget {
 class _MenuPageBodyState extends State<MenuPageBody> {
   @override
   Widget build(BuildContext context) {
+
+    List<TouristsSpots> touristSpots = touristsSpots;
+
+
     return Container(
       child: Card(
-        child: Text("appbarText"),
+        child: ListView.builder(
+          itemCount: touristSpots.length, 
+          itemBuilder: (BuildContext context, int index) {
+            return  Card(child: Text(touristSpots[index].name),
+            );
+          }
+        ),
       ),
     );
   }
