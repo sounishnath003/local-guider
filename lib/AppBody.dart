@@ -25,24 +25,6 @@ class AppBody extends StatelessWidget {
             ],
           ),
           MenuItems()
-          // CircleAvatar(
-
-          // ),
-          // Padding(
-          //   padding: const EdgeInsets.all(28.0),
-          //   child: FittedBox(
-          //     fit: BoxFit.contain,
-          //     child: Text.rich(TextSpan(text: "", children: <TextSpan>[
-          //       TextSpan(
-          //           text: "Kolkata\n",
-          //           style: TextStyle(fontSize: 38, letterSpacing: 3)),
-          //       TextSpan(
-          //           text: "Welcome\n",
-          //           style: TextStyle(fontSize: 22, letterSpacing: 2))
-          //     ])),
-          //   ),
-          // ),
-          // MenuItems()
         ],
       ),
     );
@@ -94,12 +76,14 @@ class MenuItems extends StatelessWidget {
                         );
                       }));
                     },
-                    color: Colors.amberAccent,
+                    color: Colors.redAccent,
                     child: Padding(
                       padding: const EdgeInsets.all(34.0),
                       child: Text(
                         "$item",
-                        style: TextStyle(fontSize: 25),
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white),
                       ),
                     ),
                   ),

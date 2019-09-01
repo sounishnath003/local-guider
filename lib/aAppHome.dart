@@ -32,7 +32,7 @@ Widget _floatingActionButton() {
   return FloatingActionButton(
     onPressed: () {},
     child: Icon(Icons.add),
-    backgroundColor: Colors.black,
+    backgroundColor: Colors.redAccent,
     // elevation: 0.0,
   );
 }
