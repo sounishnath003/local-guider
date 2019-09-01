@@ -13,12 +13,12 @@ class AppBody extends StatelessWidget {
           Stack(
             children: <Widget>[
               Positioned(
-                left: 20,
-                top: 30,
-                child: CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Colors.red[50],
-                )),
+                  left: 20,
+                  top: 30,
+                  child: CircleAvatar(
+                    radius: 48,
+                    backgroundColor: Colors.red[50],
+                  )),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
@@ -31,7 +31,11 @@ class AppBody extends StatelessWidget {
               _bannerText(),
             ],
           ),
-          MenuItems()
+          SizedBox(
+            height: 30,
+          ),
+          SingleChildScrollView(
+              scrollDirection: Axis.vertical, child: MenuItems())
         ],
       ),
     );
@@ -73,26 +77,28 @@ class MenuItems extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.16,
               width: MediaQuery.of(context).size.width * 0.1,
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: FlatButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (BuildContext context) {
-                      return MenuPage(
-                        appbarText: "$item",
-                      );
-                    }));
-                  },
-                  color: Colors.white,
+                  padding: const EdgeInsets.all(8.0),
                   child: Padding(
-                    padding: const EdgeInsets.all(34.0),
-                    child: Text(
-                      "$item",
-                      style: TextStyle(fontSize: 25, color: Colors.black),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient: LinearGradient(
+                              colors: [
+                                Color(0xffe53940),
+                                Color(0xffe53935),
+                                Color(0xffff4081),
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomRight)),
+                      child: Center(
+                        child: Text(
+                          "$item",
+                          style: TextStyle(fontSize: 23, color: Colors.white),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
+                  )),
             );
           }),
     );
