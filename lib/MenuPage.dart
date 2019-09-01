@@ -80,6 +80,7 @@ class _MenuPageBodyState extends State<MenuPageBody> {
                       TextSpan(text: "Kolkata \n",
                       style: TextStyle(
                         fontSize: 40,
+                        // color: Colors.white70,
                         letterSpacing: 1
                         // color: Colors.white
                       )
