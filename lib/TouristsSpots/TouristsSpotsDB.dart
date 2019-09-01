@@ -11,12 +11,12 @@ class TouristsSpots {
 
 List<TouristsSpots> touristsSpots = [
   
-  TouristsSpots("Victoria Memorial", 
+  TouristsSpots("Birla Planatorium", 
   Text("Nice Place for family"), 
   "Assets/Images/devFest.png", 
   "Mid Kolkata, 700-124"
   ),
-  
+
   TouristsSpots("Victoria Memorial", 
   Text("Nice Place for family"), 
   "Assets/Images/devFest.png", 
