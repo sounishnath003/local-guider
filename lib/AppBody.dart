@@ -34,8 +34,7 @@ class AppBody extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          SingleChildScrollView(
-              scrollDirection: Axis.vertical, child: MenuItems())
+          MenuItems()
         ],
       ),
     );
@@ -80,21 +79,30 @@ class MenuItems extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          gradient: LinearGradient(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return MenuPage(appbarText: item,);
+                          }));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            gradient: LinearGradient(
                               colors: [
                                 Color(0xffe53940),
                                 Color(0xffe53935),
                                 Color(0xffff4081),
                               ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomRight)),
-                      child: Center(
-                        child: Text(
-                          "$item",
-                          style: TextStyle(fontSize: 23, color: Colors.white),
+                              begin: Alignment(-3.0, 4.0),
+                              end: Alignment(1.0, -4.0),
+                            )),
+                        child: Center(
+                          child: Text(
+                            "$item",
+                            style: TextStyle(fontSize: 23, color: Colors.white),
+                          ),
                         ),
                       ),
                     ),

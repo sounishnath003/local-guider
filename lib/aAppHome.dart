@@ -14,7 +14,8 @@ class AppHome extends StatelessWidget {
           actions: <Widget>[
             Icon(
               Icons.account_circle,
-              size: 30,
+              color: Colors.redAccent,
+              size: 34,
             ),
             SizedBox(
               width: 10,
@@ -45,8 +46,8 @@ Widget _bottomAppBar() {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        _iconBottomBar(Icon(Icons.menu), 25),
-        _iconBottomBar(Icon(Icons.search), 25)
+        _iconBottomBar(Icon(Icons.menu), 32),
+        _iconBottomBar(Icon(Icons.search), 32)
       ],
     ),
   );
