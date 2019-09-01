@@ -120,9 +120,13 @@ Widget _touristsPlace(BuildContext context) {
                       width: 220,
                       height: 140,
                       decoration: BoxDecoration(
+                        // color: touristSpots[index].color
                         image: DecorationImage(
+                          // colorFilter: ColorFilter.linearToSrgbGamma(),
                           fit: BoxFit.fitWidth,
-                          image: AssetImage(touristSpots[index].imagePath),
+                          image: AssetImage(touristSpots[index].imagePath,
+                          
+                          ),
                           )
                       ),
                       child: new Column(
