@@ -46,6 +46,12 @@ flutter:
    - Assets/Images/devFest.png
    - Assets/Images/birla.gif
    - Assets/Images/victoria.jpg
+   - Assets/Images/princep.jpg
+   - Assets/Images/fort.png
+   - Assets/Images/belur.webp
+   - Assets/Images/howrah.jpg
+   - Assets/Images/ecoprk.jpg
+   - Assets/Images/sova.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
