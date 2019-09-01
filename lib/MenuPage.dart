@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
@@ -11,21 +9,6 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("$appbarText"),
-      //   centerTitle: true,
-      //   elevation: 0.0,
-      //   actions: <Widget>[
-      //     Icon(
-      //       Icons.account_circle,
-      //       color: Colors.redAccent,
-      //       size: 34,
-      //     ),
-      //     SizedBox(
-      //       width: 10,
-      //     )
-      //   ],
-      // ),
       body: MenuPageBody(),
     );
   }
@@ -46,7 +29,7 @@ class _MenuPageBodyState extends State<MenuPageBody> {
     return Material(
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Stack(
               children: <Widget>[
@@ -94,7 +77,19 @@ class _MenuPageBodyState extends State<MenuPageBody> {
                   style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                 )),
             sizebox(10),
-            _touristsPlace(context)
+            _touristsPlace(context),
+           sizebox(10),
+
+           Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text(
+                  "History",
+                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                )),
+
+            sizebox(5),
+
+
 
           ],
         ),
@@ -126,7 +121,7 @@ Widget _touristsPlace(BuildContext context) {
                       height: 140,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fitWidth,
                           image: AssetImage(touristSpots[index].imagePath),
                           )
                       ),
@@ -138,6 +133,7 @@ Widget _touristsPlace(BuildContext context) {
                             children: <Widget>[
                               Text(touristSpots[index].name,
                               style: TextStyle(
+                                fontSize: 22,
                                 decorationColor: Colors.redAccent,
                                 fontWeight: FontWeight.bold
                               ),
@@ -149,7 +145,7 @@ Widget _touristsPlace(BuildContext context) {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           );
         },
