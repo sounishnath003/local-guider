@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Kolkata Guider',
       theme: ThemeData(
+        canvasColor: Colors.white,
         primaryColor: Colors.white,
         primaryIconTheme: IconThemeData(color: Colors.black),
         fontFamily: "Product"

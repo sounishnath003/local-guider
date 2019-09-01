@@ -12,6 +12,13 @@ class AppBody extends StatelessWidget {
         children: <Widget>[
           Stack(
             children: <Widget>[
+              Positioned(
+                left: 20,
+                top: 30,
+                child: CircleAvatar(
+                  radius: 40,
+                  backgroundColor: Colors.red[50],
+                )),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
@@ -31,24 +38,24 @@ class AppBody extends StatelessWidget {
   }
 }
 
-Widget _bannerText(){
+Widget _bannerText() {
   return Padding(
-                padding: const EdgeInsets.all(39.0),
-                child: Align(
-                  alignment: Alignment.bottomLeft,
-                                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: Text.rich(TextSpan(text: "", children: <TextSpan>[
-                    TextSpan(
-                        text: "Kolkata\n",
-                        style: TextStyle(fontSize: 38, letterSpacing: 3)),
-                    TextSpan(
-                        text: "Welcome\n",
-                        style: TextStyle(fontSize: 22, letterSpacing: 2))
-                  ])),
-            ),
-                ),
-              );
+    padding: const EdgeInsets.all(39.0),
+    child: Align(
+      alignment: Alignment.bottomLeft,
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: Text.rich(TextSpan(text: "", children: <TextSpan>[
+          TextSpan(
+              text: "Kolkata\n",
+              style: TextStyle(fontSize: 38, letterSpacing: 3)),
+          TextSpan(
+              text: "Welcome\n",
+              style: TextStyle(fontSize: 22, letterSpacing: 2))
+        ])),
+      ),
+    ),
+  );
 }
 
 class MenuItems extends StatelessWidget {
@@ -68,25 +75,23 @@ class MenuItems extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: FlatButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (BuildContext context) {
-                        return MenuPage(
-                          appbarText: "$item",
-                        );
-                      }));
-                    },
-                    color: Colors.redAccent,
-                    child: Padding(
-                      padding: const EdgeInsets.all(34.0),
-                      child: Text(
-                        "$item",
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.white),
-                      ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return MenuPage(
+                        appbarText: "$item",
+                      );
+                    }));
+                  },
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(34.0),
+                    child: Text(
+                      "$item",
+                      style: TextStyle(fontSize: 25, color: Colors.black),
                     ),
                   ),
+                ),
               ),
             );
           }),
