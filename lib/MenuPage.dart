@@ -15,6 +15,8 @@ class MenuPage extends StatelessWidget {
   }
 }
 
+List<TouristsSpots> touristSpots = touristsSpots;
+
 class MenuPageBody extends StatefulWidget {
   MenuPageBody({Key key}) : super(key: key);
 
@@ -22,7 +24,7 @@ class MenuPageBody extends StatefulWidget {
 }
 
 class _MenuPageBodyState extends State<MenuPageBody> {
-  List<TouristsSpots> touristSpots = touristsSpots;
+  // List<TouristsSpots> touristSpots = touristsSpots;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +60,6 @@ class _MenuPageBodyState extends State<MenuPageBody> {
             ],
           ),
           sizebox(10),
-
           Center(
             child: Text(
               "Sweetness of Rosogolla",
@@ -73,54 +74,31 @@ class _MenuPageBodyState extends State<MenuPageBody> {
           Padding(
               padding: const EdgeInsets.all(15.0),
               child: Text(
-                "Our story",
+                "Tourists Spots",
                 style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
               )),
           sizebox(10),
           _touristsPlace(context),
           sizebox(10),
-
-          bottomScrollDetails()
-
-          // Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          //   child: Align(
-          //     alignment: Alignment.center,
-          //                 child: Text.rich(
-          //       TextSpan(
-          //         text: "",
-          //         children: <TextSpan>[
-          //           TextSpan(
-          //             text: "Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post, it was India's capital under the British Raj from 1773–1911 \n\n",
-          //             style: TextStyle(fontSize: 17)
-          //           ),
-          //           TextSpan(
-          //             text: "oday it’s known for its grand colonial architecture, art galleries and cultural festivals. \n",
-          //             style: TextStyle(fontSize: 17)
-          //           )
-          //         ]
-          //       )
-          //     ),
-          //   ),
-          // ),
+          bottomScrollDetails(context)
         ],
       ),
     );
   }
 }
 
-Widget bottomScrollDetails() {
+Widget bottomScrollDetails(BuildContext context) {
   return Expanded(
     flex: 1,
     child: ListView(
       scrollDirection: Axis.vertical,
       children: <Widget>[
         Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Text(
-                "Our story",
-                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-              )),
+            padding: const EdgeInsets.all(15.0),
+            child: Text(
+              "Our story",
+              style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+            )),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Align(
@@ -131,12 +109,18 @@ Widget bottomScrollDetails() {
                       "Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post, it was India's capital under the British Raj from 1773–1911 \n\n",
                   style: TextStyle(fontSize: 17)),
               TextSpan(
+                  text: "History\n\n",
+                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+              TextSpan(
                   text:
-                      "oday it’s known for its grand colonial architecture, art galleries and cultural festivals. \n",
+                      "Today it’s known for its grand colonial architecture, art galleries and cultural festivals. \n",
                   style: TextStyle(fontSize: 17))
             ])),
           ),
         ),
+
+      
+        
       ],
     ),
   );
