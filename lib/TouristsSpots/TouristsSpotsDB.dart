@@ -16,21 +16,21 @@ List<TouristsSpots> touristsSpots = [
   Text("Nice Place for family"), 
   "Assets/Images/birla.gif", 
   "Mid Kolkata, 700-124",
-  Color(0xFF42A5F5)
+  Color(0xFFE040FB)
   ),
 
   TouristsSpots("Victoria Memorial", 
   Text("Nice Place for family"), 
   "Assets/Images/victoria.jpg", 
   "Mid Kolkata, 700-124",
-  Color(0xFF42A5F5)
+  Color(0XFF651FFF)
   ),
 
   TouristsSpots("Sovabazar Memorial", 
   Text("Nice Place for family"), 
   "Assets/Images/devFest.png", 
   "Mid Kolkata, 700-124",
-  Color(0xFF42A5F5)
+  Color(0XFF26C6DA)
   )
 
 ];

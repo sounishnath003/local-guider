@@ -125,13 +125,15 @@ Widget bottomScrollDetails(BuildContext context) {
               child: Padding(
                 padding: const EdgeInsets.all(22.0),
                 child: Card(
+                  // shape: ,
                   color: touristSpots[index].color,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(touristSpots[index].name,
                       style: TextStyle(
-                        fontSize: 16
+                        fontSize: 16,
+                        color: Colors.white
                       ),),
                     ),
                   ),
