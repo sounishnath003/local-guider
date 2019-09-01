@@ -13,7 +13,7 @@ List<TouristsSpots> touristsSpots = [
   
   TouristsSpots("Birla Planatorium", 
   Text("Nice Place for family"), 
-  "Assets/Images/devFest.png", 
+  "Assets/Images/0.webp", 
   "Mid Kolkata, 700-124"
   ),
 
