@@ -10,25 +10,63 @@ class AppBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(28.0),
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Text.rich(TextSpan(text: "", children: <TextSpan>[
-                TextSpan(
-                    text: "Kolkata\n",
-                    style: TextStyle(fontSize: 38, letterSpacing: 3)),
-                TextSpan(
-                    text: "Welcome\n",
-                    style: TextStyle(fontSize: 22, letterSpacing: 2))
-              ])),
-            ),
+          Stack(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.redAccent,
+                  ),
+                ),
+              ),
+              _bannerText(),
+            ],
           ),
           MenuItems()
+          // CircleAvatar(
+
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.all(28.0),
+          //   child: FittedBox(
+          //     fit: BoxFit.contain,
+          //     child: Text.rich(TextSpan(text: "", children: <TextSpan>[
+          //       TextSpan(
+          //           text: "Kolkata\n",
+          //           style: TextStyle(fontSize: 38, letterSpacing: 3)),
+          //       TextSpan(
+          //           text: "Welcome\n",
+          //           style: TextStyle(fontSize: 22, letterSpacing: 2))
+          //     ])),
+          //   ),
+          // ),
+          // MenuItems()
         ],
       ),
     );
   }
+}
+
+Widget _bannerText(){
+  return Padding(
+                padding: const EdgeInsets.all(39.0),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                                child: FittedBox(
+                  fit: BoxFit.contain,
+                  child: Text.rich(TextSpan(text: "", children: <TextSpan>[
+                    TextSpan(
+                        text: "Kolkata\n",
+                        style: TextStyle(fontSize: 38, letterSpacing: 3)),
+                    TextSpan(
+                        text: "Welcome\n",
+                        style: TextStyle(fontSize: 22, letterSpacing: 2))
+                  ])),
+            ),
+                ),
+              );
 }
 
 class MenuItems extends StatelessWidget {
