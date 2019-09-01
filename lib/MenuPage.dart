@@ -35,9 +35,27 @@ class _MenuPageBodyState extends State<MenuPageBody> {
     return Container(
       child: Card(
         child: ListView.builder(
+          scrollDirection: Axis.horizontal,
           itemCount: touristSpots.length, 
           itemBuilder: (BuildContext context, int index) {
-            return  Card(child: Text(touristSpots[index].name),
+            return  Wrap(
+              direction: Axis.horizontal,
+              alignment: WrapAlignment.spaceAround,
+              spacing: 2.0,
+              children: <Widget>[
+                Container(
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        children: <Widget>[
+                          Text(touristSpots[index].name)
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
             );
           }
         ),

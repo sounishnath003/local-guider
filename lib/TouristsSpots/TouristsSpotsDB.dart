@@ -16,6 +16,12 @@ List<TouristsSpots> touristsSpots = [
   "Assets/Images/devFest.png", 
   "Mid Kolkata, 700-124"
   ),
+  
+  TouristsSpots("Victoria Memorial", 
+  Text("Nice Place for family"), 
+  "Assets/Images/devFest.png", 
+  "Mid Kolkata, 700-124"
+  ),
 
   TouristsSpots("Sovabazar Memorial", 
   Text("Nice Place for family"), 
