@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
 class MenuPage extends StatelessWidget {
@@ -80,15 +81,44 @@ class _MenuPageBodyState extends State<MenuPageBody> {
             _touristsPlace(context),
            sizebox(10),
 
-           Padding(
+          Expanded(
+                      child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) {
+                return Column(
+                  children: <Widget>[
+                    Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  "History",
+                  "Our story",
                   style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                 )),
+                  ],
+                );
+              },),
+          )
 
-            sizebox(5),
-
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            //   child: Align(
+            //     alignment: Alignment.center,
+            //                 child: Text.rich(
+            //       TextSpan(
+            //         text: "",
+            //         children: <TextSpan>[
+            //           TextSpan(
+            //             text: "Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post, it was India's capital under the British Raj from 1773–1911 \n\n",
+            //             style: TextStyle(fontSize: 17)
+            //           ),
+            //           TextSpan(
+            //             text: "oday it’s known for its grand colonial architecture, art galleries and cultural festivals. \n",
+            //             style: TextStyle(fontSize: 17)
+            //           )
+            //         ]
+            //       )
+            //     ),
+            //   ),
+            // ),
 
 
           ],
@@ -115,15 +145,14 @@ Widget _touristsPlace(BuildContext context) {
                 padding: const EdgeInsets.only(left: 15.0),
                 child: new Card(
                   child: Padding(
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(5),
                     child: Container(
                       width: 220,
                       height: 140,
                       decoration: BoxDecoration(
-                        // color: touristSpots[index].color
                         image: DecorationImage(
-                          // colorFilter: ColorFilter.linearToSrgbGamma(),
-                          fit: BoxFit.fitWidth,
+                          colorFilter: ColorFilter.linearToSrgbGamma(),
+                          fit: BoxFit.cover,
                           image: AssetImage(touristSpots[index].imagePath,
                           
                           ),
@@ -177,36 +206,3 @@ Widget _positionBannerText(BuildContext context) {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
       ])));
 }
-
-/*
-
-
-Expanded(
-                  flex: 1,
-                  child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: touristSpots.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Wrap(
-                          direction: Axis.horizontal,
-                          alignment: WrapAlignment.spaceAround,
-                          spacing: 2.0,
-                          children: <Widget>[
-                            Container(
-                              child: Card(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Text(touristSpots[index].name)
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
-                      }),
-                )
-
-                */

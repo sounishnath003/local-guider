@@ -45,6 +45,7 @@ flutter:
   assets:
    - Assets/Images/devFest.png
    - Assets/Images/birla.gif
+   - Assets/Images/victoria.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
