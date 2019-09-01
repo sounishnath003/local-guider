@@ -36,7 +36,7 @@ class _MenuPageBodyState extends State<MenuPageBody> {
           Stack(
             children: <Widget>[
               Container(
-                height: MediaQuery.of(context).size.height * 0.42,
+                height: MediaQuery.of(context).size.height * 0.35,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     gradient: LinearGradient(colors: <Color>[
@@ -79,7 +79,7 @@ class _MenuPageBodyState extends State<MenuPageBody> {
               )),
           sizebox(10),
           _touristsPlace(context),
-          sizebox(10),
+          sizebox(5),
           bottomScrollDetails(context)
         ],
       ),
@@ -88,12 +88,15 @@ class _MenuPageBodyState extends State<MenuPageBody> {
 }
 
 Widget bottomScrollDetails(BuildContext context) {
-  return Expanded(
-    flex: 1,
-    child: ListView(
-      scrollDirection: Axis.vertical,
-      children: <Widget>[
-        Padding(
+  return SingleChildScrollView(
+    scrollDirection: Axis.vertical,
+      child: Container(
+        
+      height: 250,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
             padding: const EdgeInsets.all(15.0),
             child: Text(
               "Our story",
@@ -106,22 +109,43 @@ Widget bottomScrollDetails(BuildContext context) {
             child: Text.rich(TextSpan(text: "", children: <TextSpan>[
               TextSpan(
                   text:
-                      "Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post, it was India's capital under the British Raj from 1773–1911 \n\n",
+                      "Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post. \n",
                   style: TextStyle(fontSize: 17)),
-              TextSpan(
-                  text: "History\n\n",
-                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
-              TextSpan(
-                  text:
-                      "Today it’s known for its grand colonial architecture, art galleries and cultural festivals. \n",
-                  style: TextStyle(fontSize: 17))
             ])),
           ),
         ),
 
-      
-        
-      ],
+      Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+          itemCount: touristSpots.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 2.0),
+              child: Padding(
+                padding: const EdgeInsets.all(22.0),
+                child: Card(
+                  color: touristSpots[index].color,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(touristSpots[index].name,
+                      style: TextStyle(
+                        fontSize: 16
+                      ),),
+                    ),
+                  ),
+                  ),
+              ),
+            );
+          },
+          ),
+      ),
+
+      // sizebox(50)
+          
+        ],
+      ),
     ),
   );
 }
@@ -204,3 +228,39 @@ Widget _positionBannerText(BuildContext context) {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold))
       ])));
 }
+
+/*
+
+
+
+
+Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Text(
+              "Our story",
+              style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+            )),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Align(
+            alignment: Alignment.center,
+            child: Text.rich(TextSpan(text: "", children: <TextSpan>[
+              TextSpan(
+                  text:
+                      "Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post, it was India's capital under the British Raj from 1773–1911 \n\n",
+                  style: TextStyle(fontSize: 17)),
+              TextSpan(
+                  text: "History\n\n",
+                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text:
+                      "Today it’s known for its grand colonial architecture, art galleries and cultural festivals. \n",
+                  style: TextStyle(fontSize: 17))
+            ])),
+          ),
+        ),
+
+
+
+
+*/
