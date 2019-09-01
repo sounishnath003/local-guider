@@ -22,109 +22,124 @@ class MenuPageBody extends StatefulWidget {
 }
 
 class _MenuPageBodyState extends State<MenuPageBody> {
-
   List<TouristsSpots> touristSpots = touristsSpots;
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Stack(
-              children: <Widget>[
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.42,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: <Color>[
-                        Colors.redAccent,
-                        Colors.red,
-                      ]),
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(50),
-                          bottomRight: Radius.circular(50))),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Stack(
+            children: <Widget>[
+              Container(
+                height: MediaQuery.of(context).size.height * 0.42,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: <Color>[
+                      Colors.redAccent,
+                      Colors.red,
+                    ]),
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(50),
+                        bottomRight: Radius.circular(50))),
+              ),
+              AppBar(
+                backgroundColor: Colors.transparent,
+                title: Text(
+                  "Tourists Spots",
+                  style: TextStyle(color: Colors.white, fontSize: 22),
                 ),
-                AppBar(
-                  backgroundColor: Colors.transparent,
-                  title: Text(
-                    "Tourists Spots",
-                    style: TextStyle(color: Colors.white, fontSize: 22),
-                  ),
-                  centerTitle: true,
-                  elevation: 0.0,
-                ),
-                _positionBannerText(context),
-              ],
-            ),
-            sizebox(10),
+                centerTitle: true,
+                elevation: 0.0,
+              ),
+              _positionBannerText(context),
+            ],
+          ),
+          sizebox(10),
 
-            Center(
-              child: Text(
-                "Sweetness of Rosogolla",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1,
-                ),
+          Center(
+            child: Text(
+              "Sweetness of Rosogolla",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1,
               ),
             ),
-            sizebox(15),
-            Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  "Our story",
-                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-                )),
-            sizebox(10),
-            _touristsPlace(context),
-           sizebox(10),
+          ),
+          sizebox(15),
+          Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                "Our story",
+                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+              )),
+          sizebox(10),
+          _touristsPlace(context),
+          sizebox(10),
 
-          Expanded(
-                      child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  children: <Widget>[
-                    Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  "Our story",
-                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-                )),
-                  ],
-                );
-              },),
-          )
+          bottomScrollDetails()
 
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            //   child: Align(
-            //     alignment: Alignment.center,
-            //                 child: Text.rich(
-            //       TextSpan(
-            //         text: "",
-            //         children: <TextSpan>[
-            //           TextSpan(
-            //             text: "Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post, it was India's capital under the British Raj from 1773–1911 \n\n",
-            //             style: TextStyle(fontSize: 17)
-            //           ),
-            //           TextSpan(
-            //             text: "oday it’s known for its grand colonial architecture, art galleries and cultural festivals. \n",
-            //             style: TextStyle(fontSize: 17)
-            //           )
-            //         ]
-            //       )
-            //     ),
-            //   ),
-            // ),
-
-
-          ],
-        ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          //   child: Align(
+          //     alignment: Alignment.center,
+          //                 child: Text.rich(
+          //       TextSpan(
+          //         text: "",
+          //         children: <TextSpan>[
+          //           TextSpan(
+          //             text: "Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post, it was India's capital under the British Raj from 1773–1911 \n\n",
+          //             style: TextStyle(fontSize: 17)
+          //           ),
+          //           TextSpan(
+          //             text: "oday it’s known for its grand colonial architecture, art galleries and cultural festivals. \n",
+          //             style: TextStyle(fontSize: 17)
+          //           )
+          //         ]
+          //       )
+          //     ),
+          //   ),
+          // ),
+        ],
+      ),
     );
   }
+}
+
+Widget bottomScrollDetails() {
+  return Expanded(
+    flex: 1,
+    child: ListView(
+      scrollDirection: Axis.vertical,
+      children: <Widget>[
+        Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                "Our story",
+                style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+              )),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Align(
+            alignment: Alignment.center,
+            child: Text.rich(TextSpan(text: "", children: <TextSpan>[
+              TextSpan(
+                  text:
+                      "Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post, it was India's capital under the British Raj from 1773–1911 \n\n",
+                  style: TextStyle(fontSize: 17)),
+              TextSpan(
+                  text:
+                      "oday it’s known for its grand colonial architecture, art galleries and cultural festivals. \n",
+                  style: TextStyle(fontSize: 17))
+            ])),
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 Widget _touristsPlace(BuildContext context) {
@@ -150,26 +165,25 @@ Widget _touristsPlace(BuildContext context) {
                       width: 220,
                       height: 140,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                          colorFilter: ColorFilter.linearToSrgbGamma(),
-                          fit: BoxFit.cover,
-                          image: AssetImage(touristSpots[index].imagePath,
-                          
-                          ),
-                          )
-                      ),
+                          image: DecorationImage(
+                        colorFilter: ColorFilter.linearToSrgbGamma(),
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                          touristSpots[index].imagePath,
+                        ),
+                      )),
                       child: new Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: <Widget>[
                           Stack(
                             children: <Widget>[
-                              Text(touristSpots[index].name,
-                              style: TextStyle(
-                                fontSize: 22,
-                                decorationColor: Colors.redAccent,
-                                fontWeight: FontWeight.bold
-                              ),
+                              Text(
+                                touristSpots[index].name,
+                                style: TextStyle(
+                                    fontSize: 22,
+                                    decorationColor: Colors.redAccent,
+                                    fontWeight: FontWeight.bold),
                               )
                             ],
                           )
