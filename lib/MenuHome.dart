@@ -81,31 +81,33 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
   }
 
   Widget touristTextDetails() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        children: <Widget>[
-          Text(
-            touristObject.name,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 23,
+    return SingleChildScrollView(
+          child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          children: <Widget>[
+            Text(
+              touristObject.name,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 23,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          Text.rich(TextSpan(text: "", children: <TextSpan>[
-            TextSpan(
-                text: touristObject.desc,
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 18,
-                  // letterSpacing: 1,
-                ))
-          ]))
+            SizedBox(
+              height: 16,
+            ),
+            Text.rich(TextSpan(text: "", children: <TextSpan>[
+              TextSpan(
+                  text: touristObject.desc,
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 18,
+                    // letterSpacing: 1,
+                  ))
+            ]))
 
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -138,12 +140,68 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
               ),
 
               SingleChildScrollView(
-                // scrollDirection: ,
+                scrollDirection: Axis.horizontal,
+                child: _clipsWidget(),
               )
+              
             ],
           )
         ));
   }
+
+   Widget roundedContainer(Color color) {
+    return Container(
+      width: 100,
+      height: 100,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
+    );
+  }
+
+ Widget _clipsWidget() {
+    return Container(
+      height: 250,
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: <Widget>[
+          Column(
+            children: <Widget>[
+              roundedContainer(Colors.redAccent),
+              SizedBox(height: 20),
+              roundedContainer(Colors.greenAccent),
+            ],
+          ),
+          SizedBox(width: 16),
+          Column(
+            children: <Widget>[
+              roundedContainer(Colors.orangeAccent),
+              SizedBox(height: 20),
+              roundedContainer(Colors.purple),
+            ],
+          ),
+          SizedBox(width: 16),
+          Column(
+            children: <Widget>[
+              roundedContainer(Colors.grey),
+              SizedBox(height: 20),
+              roundedContainer(Colors.blueGrey),
+            ],
+          ),
+          SizedBox(width: 16),
+          Column(
+            children: <Widget>[
+              roundedContainer(Colors.lightGreenAccent),
+              SizedBox(height: 20),
+              roundedContainer(Colors.pinkAccent),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
 
   Widget build(BuildContext context) {
     return Stack(
