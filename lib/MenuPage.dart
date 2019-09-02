@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:kolkata_guide/MenuHome.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
