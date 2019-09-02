@@ -1,6 +1,5 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
 class MenuHome extends StatefulWidget {

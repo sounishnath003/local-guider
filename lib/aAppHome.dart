@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kolkata_guide/AppBody.dart';
+import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
+
+final List<TouristsSpots> touristsCard = touristsSpots;
 
 class AppHome extends StatelessWidget {
   const AppHome({Key key}) : super(key: key);
@@ -23,17 +26,23 @@ class AppHome extends StatelessWidget {
           ],
         ),
         body: AppBody(),
+        drawer: Drawer(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: _floatingActionButton(),
+        floatingActionButton: _floatingActionButton(context),
         bottomNavigationBar: _bottomAppBar());
   }
 }
 
-Widget _floatingActionButton() {
+Widget _floatingActionButton(BuildContext context) {
   return FloatingActionButton(
-    onPressed: () {},
-    child: Icon(Icons.search,
-    size: 32,
+    onPressed: () {
+      Future.delayed(const Duration(milliseconds: 30), () {
+      showSearch(context: context, delegate: DataSearch());
+      });
+    },
+    child: Icon(
+      Icons.search,
+      size: 32,
     ),
     backgroundColor: Colors.redAccent,
     // elevation: 0.0,
@@ -55,39 +64,76 @@ Widget _bottomAppBar() {
   );
 }
 
-Widget _iconBottomBar(Icon icon, double size){
+Widget _iconBottomBar(Icon icon, double size) {
   return IconButton(
-    onPressed: (){}, 
+    onPressed: () {},
     icon: icon,
     iconSize: size,
   );
 }
 
-
-
-class DataSearch extends SearchDelegate {
+class DataSearch extends SearchDelegate<String> {
   @override
   List<Widget> buildActions(BuildContext context) {
-    // TODO: implement buildActions
-    return null;
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {},
+      )
+    ];
   }
 
   @override
   Widget buildLeading(BuildContext context) {
     // TODO: implement buildLeading
-    return null;
+    return IconButton(
+      onPressed: () {
+        query = "";
+      },
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.arrow_menu,
+        progress: transitionAnimation,
+      ),
+    );
   }
 
   @override
   Widget buildResults(BuildContext context) {
     // TODO: implement buildResults
-    return null;
+    return null ;
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
-    return null;
-  }
 
+    final List<TouristsSpots> suggestionLists = query.isEmpty
+        ? []
+        : touristsCard.where((p) => p.name.startsWith(query)).toList();
+
+    return ListView.builder(
+        itemCount: suggestionLists.length,
+        itemBuilder: (context, index) => ListTile(
+          onTap: (){
+            showResults(context);
+          },
+              leading: Icon(Icons.location_city),
+              title: RichText(
+                text: TextSpan(
+                  text: suggestionLists[index].name.substring(0, query.length),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black
+                  ),
+                  children: [
+                    TextSpan(
+                      text: suggestionLists[index].name.substring(query.length),
+                      style: TextStyle(color: Colors.grey)
+                      )
+                  ]
+                  ),
+              ),
+              subtitle: Text(suggestionLists[index].famousFor),
+            ));
+  }
 }
