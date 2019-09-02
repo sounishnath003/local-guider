@@ -36,9 +36,10 @@ class MenuHomeBody extends StatefulWidget {
   _MenuHomeBodyState createState() => _MenuHomeBodyState(touristObject);
 }
 
-class _MenuHomeBodyState extends State<MenuHomeBody> with AfterLayoutMixin<MenuHomeBody> {
-  
-  double _bottomSheetBottomPosition = 0;
+class _MenuHomeBodyState extends State<MenuHomeBody>
+    with AfterLayoutMixin<MenuHomeBody> {
+
+  double _bottomSheetBottomPosition = -330;
   bool isCollasped = false;
 
   TouristsSpots touristObject;
@@ -57,10 +58,16 @@ class _MenuHomeBodyState extends State<MenuHomeBody> with AfterLayoutMixin<MenuH
             ),
             IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Future.delayed(const Duration(milliseconds: 250), () {
+                  setState(() {
+                    _bottomSheetBottomPosition =
+                        widget._completeBottomSheetBottomPosition;
+                        Navigator.pop(context);
+                  });
+                });
               },
               icon: Icon(
-                Icons.arrow_back,
+                Icons.close,
                 size: 30,
               ),
             ),
@@ -120,12 +127,14 @@ class _MenuHomeBodyState extends State<MenuHomeBody> with AfterLayoutMixin<MenuH
     );
   }
 
-_onTap(){
-  setState(() {
-   _bottomSheetBottomPosition = isCollasped? widget._expandedBottomSheetBottomPosition:widget._collapsableBottomSheetBottomPosition ;
-   isCollasped = !isCollasped ; 
-  });
-}
+  _onTap() {
+    setState(() {
+      _bottomSheetBottomPosition = isCollasped
+          ? widget._expandedBottomSheetBottomPosition
+          : widget._collapsableBottomSheetBottomPosition;
+      isCollasped = !isCollasped;
+    });
+  }
 
   Widget bottomScrollGoogle() {
     return AnimatedPositioned(
@@ -135,8 +144,8 @@ _onTap(){
         right: 0,
         left: 0,
         child: InkWell(
-          onTap: _onTap(),
-                  child: Container(
+          onTap: _onTap,
+          child: Container(
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -152,7 +161,8 @@ _onTap(){
                     height: 60,
                     child: Text(
                       touristObject.name,
-                      style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                     ),
                   ),
                   SingleChildScrollView(
@@ -267,9 +277,12 @@ _onTap(){
 
   @override
   void afterFirstLayout(BuildContext context) {
-    setState(() {
-     isCollasped = true ;
-     _bottomSheetBottomPosition = widget._collapsableBottomSheetBottomPosition ; 
+    Future.delayed(Duration(milliseconds: 500), () {
+      setState(() {
+        isCollasped = true;
+        _bottomSheetBottomPosition =
+            widget._collapsableBottomSheetBottomPosition;
+      });
     });
   }
 }
