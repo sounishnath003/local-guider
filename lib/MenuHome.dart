@@ -132,7 +132,26 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
                     color: Colors.white,
                     fontSize: 23,
                   ),
+                  ),
+
+                SizedBox(height: 10,),
+
+                Text.rich(
+                  TextSpan(
+                    text: "",
+                    children: <TextSpan> [
+                      TextSpan(text: touristObject.desc,
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 18,
+                        letterSpacing: 1,
+
+                      )
+                      )
+                    ]
                   )
+                )
+
                 ],
               ),
             )
