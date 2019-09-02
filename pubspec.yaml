@@ -54,6 +54,9 @@ flutter:
     - Assets/Images/howrah.jpg
     - Assets/Images/ecoprk.jpg
     - Assets/Images/sova.jpg
+    - Assets/Images/indian.jpg
+    - Assets/Images/dakhshineswar.jpg
+    - Assets/Images/park.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -201,35 +201,162 @@ class _MenuHomeBodyState extends State<MenuHomeBody>
         children: <Widget>[
           Column(
             children: <Widget>[
-              roundedContainer(Colors.redAccent),
-              SizedBox(height: 20),
-              roundedContainer(Colors.greenAccent),
+              SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Column(children: [
+                    Row(
+                      children: <Widget>[
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Address: " + touristObject.address,
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 24,
+                        ),
+                        Card(
+                          color: Colors.yellow,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              touristObject.famousFor,
+                              style: TextStyle(
+                                  letterSpacing: 1,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: touristListCards.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(left: 28.0),
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: touristListCards.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Wrap(
+                                      direction: Axis.horizontal,
+                                      children: <Widget>[
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 15.0),
+                                          child: InkWell(
+                                            onTap: () {
+                                              Navigator.push(context,
+                                                  MaterialPageRoute(builder:
+                                                      (BuildContext context) {
+                                                return MenuHome(
+                                                  touristObject:
+                                                      touristListCards[index],
+                                                );
+                                              }));
+                                            },
+                                            child: new Card(
+                                              child: Padding(
+                                                padding: EdgeInsets.all(5),
+                                                child: Container(
+                                                  width: 220,
+                                                  height: 140,
+                                                  decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                    colorFilter: ColorFilter
+                                                        .linearToSrgbGamma(),
+                                                    fit: BoxFit.cover,
+                                                    image: AssetImage(
+                                                      touristListCards[index]
+                                                          .imagePath,
+                                                    ),
+                                                  )),
+                                                  child: new Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: <Widget>[
+                                                      Stack(
+                                                        children: <Widget>[
+                                                          Text(
+                                                            touristListCards[
+                                                                    index]
+                                                                .name,
+                                                            style: TextStyle(
+                                                                fontSize: 22,
+                                                                decorationColor:
+                                                                    Colors
+                                                                        .redAccent,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold),
+                                                          )
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        )
+                      ],
+                    )
+                  ])),
             ],
-          ),
-          SizedBox(width: 16),
-          Column(
-            children: <Widget>[
-              roundedContainer(Colors.orangeAccent),
-              SizedBox(height: 20),
-              roundedContainer(Colors.purple),
-            ],
-          ),
-          SizedBox(width: 16),
-          Column(
-            children: <Widget>[
-              roundedContainer(Colors.grey),
-              SizedBox(height: 20),
-              roundedContainer(Colors.blueGrey),
-            ],
-          ),
-          SizedBox(width: 16),
-          Column(
-            children: <Widget>[
-              roundedContainer(Colors.lightGreenAccent),
-              SizedBox(height: 20),
-              roundedContainer(Colors.pinkAccent),
-            ],
-          ),
+          )
+
+          // Column(
+          //   children: <Widget>[
+          //     roundedContainer(Colors.redAccent),
+          //     SizedBox(height: 20),
+          //     roundedContainer(Colors.greenAccent),
+          //   ],
+          // ),
+          // SizedBox(width: 16),
+          // Column(
+          //   children: <Widget>[
+          //     roundedContainer(Colors.orangeAccent),
+          //     SizedBox(height: 20),
+          //     roundedContainer(Colors.purple),
+          //   ],
+          // ),
+          // SizedBox(width: 16),
+          // Column(
+          //   children: <Widget>[
+          //     roundedContainer(Colors.grey),
+          //     SizedBox(height: 20),
+          //     roundedContainer(Colors.blueGrey),
+          //   ],
+          // ),
+          // SizedBox(width: 16),
+          // Column(
+          //   children: <Widget>[
+          //     roundedContainer(Colors.lightGreenAccent),
+          //     SizedBox(height: 20),
+          //     roundedContainer(Colors.pinkAccent),
+          //   ],
+          // ),
         ],
       ),
     );
