@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kolkata_guide/AppBody.dart';
 import 'package:kolkata_guide/MenuHome.dart';
+import 'package:kolkata_guide/MenuPage.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
 final List<TouristsSpots> touristsCard = touristsSpots;
@@ -27,7 +28,67 @@ class AppHome extends StatelessWidget {
           ],
         ),
         body: AppBody(),
-        drawer: Drawer(),
+        drawer: Drawer(
+          child: DrawerHeader(
+            child: ListView(children: [
+              UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(),
+                  accountEmail: Text("flock.sinasini@gmail.com"),
+                  accountName: Text("Sounish Nath"),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: AssetImage("Assets/Images/0.webp"),
+                  )),
+              Column(
+                children: <Widget>[
+                  new Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      ListTile(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context) => MenuPage()
+                          ));
+                        },
+                        title: Text("Tourists Spot",
+                        style: TextStyle(
+                          fontSize: 16
+                        ),
+                        ),
+                      ),
+                      ListTile(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context) => MenuPage()
+                          ));
+                        },
+                        title: Text("Police Contact",
+                        style: TextStyle(
+                          fontSize: 16
+                        ),
+                        ),
+                      ),
+                      ListTile(
+                        onTap: () {
+                          // Navigator.push(context, MaterialPageRoute(
+                          //   builder: (BuildContext context) => MenuPage()
+                          // ));
+                          AlertDialog(
+                            title: Text("Kolkata Gudier"),
+                          );
+                        },
+                        title: Text("Developer",
+                        style: TextStyle(
+                          fontSize: 16
+                        ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              )
+            ]),
+          ),
+        ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: _floatingActionButton(context),
         bottomNavigationBar: _bottomAppBar());
@@ -38,7 +99,7 @@ Widget _floatingActionButton(BuildContext context) {
   return FloatingActionButton(
     onPressed: () {
       Future.delayed(const Duration(milliseconds: 30), () {
-      showSearch(context: context, delegate: DataSearch());
+        showSearch(context: context, delegate: DataSearch());
       });
     },
     child: Icon(
@@ -103,25 +164,25 @@ class DataSearch extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     return InkWell(
       onTap: () {
-        Future.delayed(const Duration(milliseconds: 35), (){
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
-              return MenuHome(touristObject: touristsCard[0],)        ;
+        Future.delayed(const Duration(milliseconds: 35), () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (BuildContext context) {
+            return MenuHome(
+              touristObject: touristsCard[0],
+            );
           }));
         });
       },
-          child: Card(
+      child: Card(
         child: Stack(
-          children: <Widget>[
-            Text("")
-          ],
+          children: <Widget>[Text("")],
         ),
       ),
-    ) ;
+    );
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-
     final suggestionLists = query.isEmpty
         ? touristsCard
         : touristsCard.where((p) => p.name.startsWith(query)).toList();
@@ -129,27 +190,28 @@ class DataSearch extends SearchDelegate {
     return ListView.builder(
         itemCount: suggestionLists.length,
         itemBuilder: (context, index) => ListTile(
-          onTap: (){
-            Navigator.push(context, MaterialPageRoute(
-              builder: (BuildContext context) {
-                return MenuHome(touristObject: suggestionLists[index],);
-              }));
-          },
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return MenuHome(
+                    touristObject: suggestionLists[index],
+                  );
+                }));
+              },
               leading: Icon(Icons.location_city),
               title: RichText(
                 text: TextSpan(
-                  text: suggestionLists[index].name.substring(0, query.length),
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black
-                  ),
-                  children: [
-                    TextSpan(
-                      text: suggestionLists[index].name.substring(query.length),
-                      style: TextStyle(color: Colors.grey)
-                      )
-                  ]
-                  ),
+                    text:
+                        suggestionLists[index].name.substring(0, query.length),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
+                    children: [
+                      TextSpan(
+                          text: suggestionLists[index]
+                              .name
+                              .substring(query.length),
+                          style: TextStyle(color: Colors.grey))
+                    ]),
               ),
               subtitle: Text(suggestionLists[index].famousFor),
             ));
