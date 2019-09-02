@@ -200,7 +200,20 @@ class _MenuHomeBodyState extends State<MenuHomeBody>
       child: Row(
         children: <Widget>[
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 3.0),
+                child: Text.rich(
+                  TextSpan(
+                    text: "** This is very famous place in kolkata, must visit.",
+                    style: TextStyle(
+                      fontSize: 15
+                    )
+                  )
+                ),
+              ),
               SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Column(children: [
@@ -235,96 +248,21 @@ class _MenuHomeBodyState extends State<MenuHomeBody>
                         )
                       ],
                     ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: touristListCards.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: const EdgeInsets.only(left: 28.0),
-                                child: ListView.builder(
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: touristListCards.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Wrap(
-                                      direction: Axis.horizontal,
-                                      children: <Widget>[
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 15.0),
-                                          child: InkWell(
-                                            onTap: () {
-                                              Navigator.push(context,
-                                                  MaterialPageRoute(builder:
-                                                      (BuildContext context) {
-                                                return MenuHome(
-                                                  touristObject:
-                                                      touristListCards[index],
-                                                );
-                                              }));
-                                            },
-                                            child: new Card(
-                                              child: Padding(
-                                                padding: EdgeInsets.all(5),
-                                                child: Container(
-                                                  width: 220,
-                                                  height: 140,
-                                                  decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                    colorFilter: ColorFilter
-                                                        .linearToSrgbGamma(),
-                                                    fit: BoxFit.cover,
-                                                    image: AssetImage(
-                                                      touristListCards[index]
-                                                          .imagePath,
-                                                    ),
-                                                  )),
-                                                  child: new Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: <Widget>[
-                                                      Stack(
-                                                        children: <Widget>[
-                                                          Text(
-                                                            touristListCards[
-                                                                    index]
-                                                                .name,
-                                                            style: TextStyle(
-                                                                fontSize: 22,
-                                                                decorationColor:
-                                                                    Colors
-                                                                        .redAccent,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold),
-                                                          )
-                                                        ],
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                          ),
-                        )
-                      ],
+                    SizedBox(
+                      height: 13,
+                    ),
+                    FlatButton(
+                      onPressed: () {},
+                      child: Text("Get Directions",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                      ),
+                      )
                     )
                   ])),
             ],
-          )
+          ),
 
           // Column(
           //   children: <Widget>[
