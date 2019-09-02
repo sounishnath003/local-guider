@@ -38,7 +38,6 @@ class MenuHomeBody extends StatefulWidget {
 
 class _MenuHomeBodyState extends State<MenuHomeBody>
     with AfterLayoutMixin<MenuHomeBody> {
-
   double _bottomSheetBottomPosition = -330;
   bool isCollasped = false;
 
@@ -62,7 +61,7 @@ class _MenuHomeBodyState extends State<MenuHomeBody>
                   setState(() {
                     _bottomSheetBottomPosition =
                         widget._completeBottomSheetBottomPosition;
-                        Navigator.pop(context);
+                    Navigator.pop(context);
                   });
                 });
               },
@@ -83,7 +82,7 @@ class _MenuHomeBodyState extends State<MenuHomeBody>
         Column(
           children: <Widget>[
             SizedBox(
-              height: 50,
+              height: 40,
             ),
             Center(
                 child: Text(
@@ -105,22 +104,31 @@ class _MenuHomeBodyState extends State<MenuHomeBody>
             Text(
               touristObject.name,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 23,
-              ),
+                  color: Colors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1),
             ),
             SizedBox(
               height: 16,
             ),
-            Text.rich(TextSpan(text: "", children: <TextSpan>[
-              TextSpan(
-                  text: touristObject.desc,
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 18,
-                    // letterSpacing: 1,
-                  ))
-            ]))
+            Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  // color: Colors.white
+                ),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    touristObject.desc,
+                    style: TextStyle(
+                      fontSize: 16,
+                      letterSpacing: 1,
+                    ),
+                  ),
+                ))
           ],
         ),
       ),
@@ -160,7 +168,7 @@ class _MenuHomeBodyState extends State<MenuHomeBody>
                     padding: EdgeInsets.symmetric(horizontal: 32),
                     height: 60,
                     child: Text(
-                      touristObject.name,
+                      "More Details",
                       style:
                           TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                     ),

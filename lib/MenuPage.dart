@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:kolkata_guide/MenuHome.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
@@ -78,7 +79,7 @@ class _MenuPageBodyState extends State<MenuPageBody> {
                 "Favourite Spots ",
                 style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
               )),
-          sizebox(10),
+          sizebox(8),
           _touristsPlace(context),
           sizebox(5),
           bottomScrollDetails(context)
@@ -162,6 +163,49 @@ Widget bottomScrollDetails(BuildContext context) {
 Widget _touristsPlace(BuildContext context) {
   List<TouristsSpots> touristSpots = touristsSpots;
 
+
+  // return Expanded(
+  //     child: Swiper(
+  //       itemBuilder: (BuildContext context,int index){
+  //           return Card(
+  //             child: Padding(
+  //               padding: const EdgeInsets.all(5),
+  //               child: Container(
+  //                 // width: 220,
+  //                 // height: 140,
+  //                 decoration: BoxDecoration(
+  //                   image: DecorationImage(
+  //                     image: AssetImage(touristSpots[index].imagePath),
+  //                     colorFilter: ColorFilter.linearToSrgbGamma(),
+  //                     fit: BoxFit.cover
+  //                   ),
+  //                 ),
+  //                 child: new Column(
+  //                   mainAxisAlignment: MainAxisAlignment.center,
+  //                   mainAxisSize: MainAxisSize.max,
+  //                   children: <Widget>[
+  //                     Stack(
+  //                       // fit: StackFit.expand,
+  //                       children: <Widget>[
+  //                         Text(touristSpots[index].name,
+  //                         style: TextStyle(
+  //                           fontSize: 23,
+  //                           color: Colors.black,
+  //                           fontWeight: FontWeight.bold
+  //                         ),
+  //                         )
+  //                       ],
+  //                     )
+  //                   ],
+  //                 )
+  //               ),
+  //             ),
+  //           );
+  //         },
+  //         itemCount: touristSpots.length,
+  //   ),
+  // );
+
   return Expanded(
     flex: 1,
     child: Padding(
@@ -224,6 +268,10 @@ Widget _touristsPlace(BuildContext context) {
       ),
     ),
   );
+
+
+
+
 }
 
 Widget sizebox(double height) {
