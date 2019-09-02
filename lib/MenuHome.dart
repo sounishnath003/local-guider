@@ -1,5 +1,6 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
 class MenuHome extends StatefulWidget {
@@ -182,15 +183,56 @@ class _MenuHomeBodyState extends State<MenuHomeBody>
         ));
   }
 
-  Widget roundedContainer(Color color) {
+  Widget recentVisitedCards() {
     return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.all(Radius.circular(20)),
-      ),
-    );
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.14,
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: touristListCards.length,
+            itemBuilder: (BuildContext context, int index) {
+              return InkWell(
+                onTap: () {
+                  setState(() {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return MenuHome(touristObject: touristListCards[index]);
+                    }));
+                  });
+                },
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Container(
+                      width: 180,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image:
+                                AssetImage(touristListCards[index].imagePath),
+                            colorFilter: ColorFilter.linearToSrgbGamma(),
+                            fit: BoxFit.cover),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
+                          Stack(
+                            children: <Widget>[
+                              Text(
+                                touristListCards[index].name,
+                                style: TextStyle(
+                                    fontSize: 22, fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }));
   }
 
   Widget _clipsWidget() {
@@ -204,15 +246,12 @@ class _MenuHomeBodyState extends State<MenuHomeBody>
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 3.0),
-                child: Text.rich(
-                  TextSpan(
-                    text: "** This is very famous place in kolkata, must visit.",
-                    style: TextStyle(
-                      fontSize: 15
-                    )
-                  )
-                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 3.0),
+                child: Text.rich(TextSpan(
+                    text:
+                        "** This is very famous place in kolkata, must visit.",
+                    style: TextStyle(fontSize: 15))),
               ),
               SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -251,15 +290,23 @@ class _MenuHomeBodyState extends State<MenuHomeBody>
                     SizedBox(
                       height: 13,
                     ),
-                    FlatButton(
-                      onPressed: () {},
-                      child: Text("Get Directions",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold
-                      ),
-                      )
-                    )
+                    // FlatButton(
+                    //   onPressed: () {},
+                    //   child: Text("Get Directions",
+                    //   style: TextStyle(
+                    //     fontSize: 18,
+                    //     fontWeight: FontWeight.bold
+                    //   ),
+                    //   )
+                    // ),
+
+                    recentVisitedCards()
+
+                    // Row(
+                    //   children: <Widget>[
+
+                    //   ],
+                    // )
                   ])),
             ],
           ),
