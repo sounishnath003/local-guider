@@ -22,6 +22,8 @@ dependencies:
   bloc: ^0.15.0
   flutter_bloc: ^0.21.0
   equatable: ^0.5.1
+  after_layout: ^1.0.7+2
+  flutter_swiper: ^1.1.6
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -43,15 +45,15 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - Assets/Images/devFest.png
-   - Assets/Images/birla.gif
-   - Assets/Images/victoria.jpg
-   - Assets/Images/princep.jpg
-   - Assets/Images/fort.png
-   - Assets/Images/belur.webp
-   - Assets/Images/howrah.jpg
-   - Assets/Images/ecoprk.jpg
-   - Assets/Images/sova.jpg
+    - Assets/Images/devFest.png
+    - Assets/Images/birla.gif
+    - Assets/Images/victoria.jpg
+    - Assets/Images/princep.jpg
+    - Assets/Images/fort.png
+    - Assets/Images/belur.webp
+    - Assets/Images/howrah.jpg
+    - Assets/Images/ecoprk.jpg
+    - Assets/Images/sova.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

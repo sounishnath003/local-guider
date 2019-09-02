@@ -24,6 +24,10 @@ class _MenuHomeState extends State<MenuHome> {
 }
 
 class MenuHomeBody extends StatefulWidget {
+  final double _expandedBottomSheetBottomPosition = 0;
+  final double _collapsableBottomSheetBottomPosition = -250;
+  final double _completeBottomSheetBottomPosition = -330;
+
   final TouristsSpots touristObject;
 
   MenuHomeBody({Key key, this.touristObject}) : super(key: key);
@@ -32,10 +36,14 @@ class MenuHomeBody extends StatefulWidget {
 }
 
 class _MenuHomeBodyState extends State<MenuHomeBody> {
+  
+  double _bottomSheetBottomPosition = 0;
+  bool isCollasped = false;
+
   TouristsSpots touristObject;
   _MenuHomeBodyState(this.touristObject);
 
-  final List<TouristsSpots> touristListCards = touristsSpots ;
+  final List<TouristsSpots> touristListCards = touristsSpots;
 
   Widget decoratedBox() {
     return Row(
@@ -82,7 +90,7 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
 
   Widget touristTextDetails() {
     return SingleChildScrollView(
-          child: Container(
+      child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: <Widget>[
@@ -105,51 +113,47 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
                     // letterSpacing: 1,
                   ))
             ]))
-
           ],
         ),
       ),
     );
   }
 
-
-  Widget bottomScrollGoogle(){
-    return Positioned(
-          bottom: 0, right: 0, left: 0, 
+  Widget bottomScrollGoogle() {
+    return AnimatedPositioned(
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.decelerate,
+        bottom: widget._collapsableBottomSheetBottomPosition,
+        right: 0,
+        left: 0,
         child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40),
-              topRight: Radius.circular(40),
-            )
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.symmetric(horizontal: 32),
-                height: 60,
-                child: Text(touristObject.name,
-                style: TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.bold
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(40),
+                  topRight: Radius.circular(40),
+                )),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.symmetric(horizontal: 32),
+                  height: 60,
+                  child: Text(
+                    touristObject.name,
+                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                  ),
                 ),
-                ),
-              ),
-
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: _clipsWidget(),
-              )
-              
-            ],
-          )
-        ));
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: _clipsWidget(),
+                )
+              ],
+            )));
   }
 
-   Widget roundedContainer(Color color) {
+  Widget roundedContainer(Color color) {
     return Container(
       width: 100,
       height: 100,
@@ -160,7 +164,7 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
     );
   }
 
- Widget _clipsWidget() {
+  Widget _clipsWidget() {
     return Container(
       height: 250,
       margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -201,7 +205,6 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
       ),
     );
   }
-
 
   Widget build(BuildContext context) {
     return Stack(
@@ -246,9 +249,7 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
             ],
           ),
         ),
-
-      bottomScrollGoogle()
-        
+        bottomScrollGoogle()
       ],
     );
   }
