@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kolkata_guide/AppBody.dart';
+import 'package:kolkata_guide/MenuHome.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
 final List<TouristsSpots> touristsCard = touristsSpots;
@@ -72,23 +73,24 @@ Widget _iconBottomBar(Icon icon, double size) {
   );
 }
 
-class DataSearch extends SearchDelegate<String> {
+class DataSearch extends SearchDelegate {
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
         icon: Icon(Icons.clear),
-        onPressed: () {},
+        onPressed: () {
+          query = "";
+        },
       )
     ];
   }
 
   @override
   Widget buildLeading(BuildContext context) {
-    // TODO: implement buildLeading
     return IconButton(
       onPressed: () {
-        query = "";
+        close(context, null);
       },
       icon: AnimatedIcon(
         icon: AnimatedIcons.arrow_menu,
@@ -99,23 +101,39 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
-    return null ;
+    return InkWell(
+      onTap: () {
+        Future.delayed(const Duration(milliseconds: 35), (){
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+              return MenuHome(touristObject: touristsCard[0],)        ;
+          }));
+        });
+      },
+          child: Card(
+        child: Stack(
+          children: <Widget>[
+            Text("")
+          ],
+        ),
+      ),
+    ) ;
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // TODO: implement buildSuggestions
 
-    final List<TouristsSpots> suggestionLists = query.isEmpty
-        ? []
+    final suggestionLists = query.isEmpty
+        ? touristsCard
         : touristsCard.where((p) => p.name.startsWith(query)).toList();
 
     return ListView.builder(
         itemCount: suggestionLists.length,
         itemBuilder: (context, index) => ListTile(
           onTap: (){
-            showResults(context);
+            Navigator.push(context, MaterialPageRoute(
+              builder: (BuildContext context) {
+                return MenuHome(touristObject: suggestionLists[index],);
+              }));
           },
               leading: Icon(Icons.location_city),
               title: RichText(
