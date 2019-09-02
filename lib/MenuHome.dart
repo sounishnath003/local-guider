@@ -31,7 +31,7 @@ class MenuHomeBody extends StatefulWidget {
   _MenuHomeBodyState createState() => _MenuHomeBodyState(touristObject);
 }
 
-class _MenuHomeBodyState extends State<MenuHomeBody> {
+class _MenuHomeBodyState extends State<MenuHomeBody>   {
   TouristsSpots touristObject;
   _MenuHomeBodyState(this.touristObject);
 
@@ -78,6 +78,35 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
     );
   }
 
+  Widget touristTextDetails() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: <Widget>[
+          Text(
+            touristObject.name,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 23,
+            ),
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          Text.rich(TextSpan(text: "", children: <TextSpan>[
+            TextSpan(
+                text: touristObject.desc,
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 18,
+                  // letterSpacing: 1,
+                ))
+          ]))
+        ],
+      ),
+    );
+  }
+
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
@@ -101,62 +130,25 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    boxShadow: [
-                      new BoxShadow(
-                        color: Colors.white30
-                      )
-                    ],
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: Padding(
-                    padding: const EdgeInsets.all(14.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10))
-                      ),
-                      child: Image.asset(touristObject.imagePath)),
-                  )
-                ),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        boxShadow: [new BoxShadow(color: Colors.white30)],
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(14.0),
+                      child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Image.asset(touristObject.imagePath)),
+                    )),
+              ),
+              SizedBox(
+                height: 40,
               ),
 
-
-            SizedBox(height: 40,),
-
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: <Widget>[
-                  Text(touristObject.name,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 23,
-                  ),
-                  ),
-
-                SizedBox(height: 10,),
-
-                Text.rich(
-                  TextSpan(
-                    text: "",
-                    children: <TextSpan> [
-                      TextSpan(text: touristObject.desc,
-                      style: TextStyle(
-                        color: Colors.white70,
-                        fontSize: 18,
-                        letterSpacing: 1,
-
-                      )
-                      )
-                    ]
-                  )
-                )
-
-                ],
-              ),
-            )
-
-
+              
+              touristTextDetails(),
 
 
             ],
@@ -166,6 +158,12 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
     );
   }
 }
+
+
+
+
+
+
 
 /*
 
