@@ -130,16 +130,19 @@ Widget bottomScrollDetails(BuildContext context) {
                           return MenuHome(touristObject: touristSpots[index],);
                         }));
                       },
-                      child: Card(
-                        // shape: ,
-                        color: touristSpots[index].color,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Center(
-                            child: Text(
-                              touristSpots[index].name,
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.white),
+                      child: Hero(
+                        tag: touristSpots[index].imagePath,
+                                              child: Card(
+                          // shape: ,
+                          color: touristSpots[index].color,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Center(
+                              child: Text(
+                                touristSpots[index].name,
+                                style:
+                                    TextStyle(fontSize: 16, color: Colors.white),
+                              ),
                             ),
                           ),
                         ),

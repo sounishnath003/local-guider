@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
 class MenuHome extends StatefulWidget {
-
-  final TouristsSpots touristObject ;
+  final TouristsSpots touristObject;
 
   MenuHome({Key key, this.touristObject}) : super(key: key);
 
@@ -11,29 +10,15 @@ class MenuHome extends StatefulWidget {
 }
 
 class _MenuHomeState extends State<MenuHome> {
-
-  TouristsSpots touristObject ;
+  TouristsSpots touristObject;
   _MenuHomeState(this.touristObject);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-          title: new Text(touristObject.name),
-          centerTitle: true,
-          elevation: 0.0,
-          actions: <Widget>[
-            Icon(
-              Icons.account_circle,
-              color: Colors.redAccent,
-              size: 34,
-            ),
-            SizedBox(
-              width: 10,
-            )
-          ],
-        ),
-        body: MenuHomeBody(touristObject: touristObject,),
+      body: MenuHomeBody(
+        touristObject: touristObject,
+      ),
     );
   }
 }
@@ -51,10 +36,54 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
   _MenuHomeBodyState(this.touristObject);
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: Center(
-         child: Image.asset(touristObject.imagePath),
-       ),
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        Hero(
+          tag: touristObject.imagePath,
+          child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: touristObject.color
+                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+              )),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                SizedBox(height: 40,),
+            IconButton(
+              onPressed: (){
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back, size: 30,),
+            ),
+              ],
+            ),
+
+            Column(
+              children: <Widget>[
+                SizedBox(width: 24,),
+              ],
+            ),
+
+            Column(
+              children: <Widget>[
+                SizedBox(height: 50,),
+                Center(child: Text(touristObject.name,
+                style: TextStyle(
+                  fontSize: 20
+                ),
+                )
+                )
+              ],
+            )
+          ],
+        )
+      ],
     );
   }
 }
