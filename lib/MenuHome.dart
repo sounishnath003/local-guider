@@ -31,9 +31,11 @@ class MenuHomeBody extends StatefulWidget {
   _MenuHomeBodyState createState() => _MenuHomeBodyState(touristObject);
 }
 
-class _MenuHomeBodyState extends State<MenuHomeBody>   {
+class _MenuHomeBodyState extends State<MenuHomeBody> {
   TouristsSpots touristObject;
   _MenuHomeBodyState(this.touristObject);
+
+  final List<TouristsSpots> touristListCards = touristsSpots ;
 
   Widget decoratedBox() {
     return Row(
@@ -102,9 +104,45 @@ class _MenuHomeBodyState extends State<MenuHomeBody>   {
                   // letterSpacing: 1,
                 ))
           ]))
+
         ],
       ),
     );
+  }
+
+
+  Widget bottomScrollGoogle(){
+    return Positioned(
+          bottom: 0, right: 0, left: 0, 
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40),
+              topRight: Radius.circular(40),
+            )
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.symmetric(horizontal: 32),
+                height: 60,
+                child: Text(touristObject.name,
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold
+                ),
+                ),
+              ),
+
+              SingleChildScrollView(
+                // scrollDirection: ,
+              )
+            ],
+          )
+        ));
   }
 
   Widget build(BuildContext context) {
@@ -146,24 +184,17 @@ class _MenuHomeBodyState extends State<MenuHomeBody>   {
               SizedBox(
                 height: 40,
               ),
-
-              
               touristTextDetails(),
-
-
             ],
           ),
         ),
+
+      bottomScrollGoogle()
+        
       ],
     );
   }
 }
-
-
-
-
-
-
 
 /*
 
