@@ -1,3 +1,4 @@
+import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 
@@ -35,7 +36,7 @@ class MenuHomeBody extends StatefulWidget {
   _MenuHomeBodyState createState() => _MenuHomeBodyState(touristObject);
 }
 
-class _MenuHomeBodyState extends State<MenuHomeBody> {
+class _MenuHomeBodyState extends State<MenuHomeBody> with AfterLayoutMixin<MenuHomeBody> {
   
   double _bottomSheetBottomPosition = 0;
   bool isCollasped = false;
@@ -119,38 +120,48 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
     );
   }
 
+_onTap(){
+  setState(() {
+   _bottomSheetBottomPosition = isCollasped? widget._expandedBottomSheetBottomPosition:widget._collapsableBottomSheetBottomPosition ;
+   isCollasped = !isCollasped ; 
+  });
+}
+
   Widget bottomScrollGoogle() {
     return AnimatedPositioned(
         duration: const Duration(milliseconds: 500),
         curve: Curves.decelerate,
-        bottom: widget._collapsableBottomSheetBottomPosition,
+        bottom: _bottomSheetBottomPosition,
         right: 0,
         left: 0,
-        child: Container(
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(40),
-                  topRight: Radius.circular(40),
-                )),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.symmetric(horizontal: 32),
-                  height: 60,
-                  child: Text(
-                    touristObject.name,
-                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+        child: InkWell(
+          onTap: _onTap(),
+                  child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  )),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.symmetric(horizontal: 32),
+                    height: 60,
+                    child: Text(
+                      touristObject.name,
+                      style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: _clipsWidget(),
-                )
-              ],
-            )));
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: _clipsWidget(),
+                  )
+                ],
+              )),
+        ));
   }
 
   Widget roundedContainer(Color color) {
@@ -252,6 +263,14 @@ class _MenuHomeBodyState extends State<MenuHomeBody> {
         bottomScrollGoogle()
       ],
     );
+  }
+
+  @override
+  void afterFirstLayout(BuildContext context) {
+    setState(() {
+     isCollasped = true ;
+     _bottomSheetBottomPosition = widget._collapsableBottomSheetBottomPosition ; 
+    });
   }
 }
 

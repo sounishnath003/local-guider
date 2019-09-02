@@ -32,7 +32,9 @@ class AppHome extends StatelessWidget {
 Widget _floatingActionButton() {
   return FloatingActionButton(
     onPressed: () {},
-    child: Icon(Icons.add),
+    child: Icon(Icons.search,
+    size: 32,
+    ),
     backgroundColor: Colors.redAccent,
     // elevation: 0.0,
   );
@@ -59,4 +61,33 @@ Widget _iconBottomBar(Icon icon, double size){
     icon: icon,
     iconSize: size,
   );
+}
+
+
+
+class DataSearch extends SearchDelegate {
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    // TODO: implement buildActions
+    return null;
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    // TODO: implement buildLeading
+    return null;
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // TODO: implement buildResults
+    return null;
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // TODO: implement buildSuggestions
+    return null;
+  }
+
 }
