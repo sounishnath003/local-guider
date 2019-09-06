@@ -12,7 +12,7 @@ List<UnknownFacts> unknowFacts = [
 
   UnknownFacts(
     title: "Land of Durga Puja",
-    desc: "Durga Puja is the most awaited and fascinating festival of Kolkata. During the Navratri festival, the entire city becomes illuminated with numerous Puja Pandals. This is the best time to feel the spirit of the city.",,
+    desc: "Durga Puja is the most awaited and fascinating festival of Kolkata. During the Navratri festival, the entire city becomes illuminated with numerous Puja Pandals. This is the best time to feel the spirit of the city.",
     image: "https://ohfact.com/wp-content/uploads/2015/07/Durga_Puja.jpg"
     ),
 
@@ -65,7 +65,7 @@ List<UnknownFacts> unknowFacts = [
 
     UnknownFacts(
       title: "Hand-Pulled Rickshaws are Still in Existence",
-      desc: "It has trams, it has metros, it has taxis, but Kolkata still depends on its traditional hand-pulled rickshaws to commute, the only one in India.",,
+      desc: "It has trams, it has metros, it has taxis, but Kolkata still depends on its traditional hand-pulled rickshaws to commute, the only one in India.",
       image: "https://ohfact.com/wp-content/uploads/2015/07/hand-pulled-rickshaw-kolkata.jpg"
     ),
 
