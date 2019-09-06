@@ -66,7 +66,7 @@ class MenuItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> menus = ["Tourists spots", "Police Help"];
+    List<String> menus = ["Tourists spots", "Police Help", "Administrative"];
     return Expanded(
       child: Stack(
               children: [

@@ -4,8 +4,7 @@ import 'package:kolkata_guide/MenuHome.dart';
 import 'package:kolkata_guide/MenuPage.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
 import 'package:kolkata_guide/UNknownFacts.dart';
-import 'package:kolkata_guide/UnknownFacts/UnknownFacts.dart';
-import 'package:kolkata_guide/main.dart' as prefix0;
+
 
 final List<TouristsSpots> touristsCard = touristsSpots;
 
