@@ -3,6 +3,9 @@ import 'package:kolkata_guide/AppBody.dart';
 import 'package:kolkata_guide/MenuHome.dart';
 import 'package:kolkata_guide/MenuPage.dart';
 import 'package:kolkata_guide/TouristsSpots/TouristsSpotsDB.dart';
+import 'package:kolkata_guide/UNknownFacts.dart';
+import 'package:kolkata_guide/UnknownFacts/UnknownFacts.dart';
+import 'package:kolkata_guide/main.dart' as prefix0;
 
 final List<TouristsSpots> touristsCard = touristsSpots;
 
@@ -89,7 +92,7 @@ class AppHome extends StatelessWidget {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: _floatingActionButton(context),
-        bottomNavigationBar: _bottomAppBar());
+        bottomNavigationBar: _bottomAppBar(context));
   }
 
   Future<Widget> showDetails(BuildContext context, String textTitle, String desc) {
@@ -134,7 +137,7 @@ Widget _floatingActionButton(BuildContext context) {
   );
 }
 
-Widget _bottomAppBar() {
+Widget _bottomAppBar(BuildContext context) {
   return BottomAppBar(
     shape: CircularNotchedRectangle(),
     notchMargin: 4.0,
@@ -142,16 +145,31 @@ Widget _bottomAppBar() {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        _iconBottomBar(Icon(Icons.menu), 32),
-        _iconBottomBar(Icon(Icons.search), 32)
+        _iconBottomBar(Icon(Icons.menu), 32, context),
+        _iconBottomBar(Icon(Icons.place), 32, context)
       ],
     ),
   );
 }
 
-Widget _iconBottomBar(Icon icon, double size) {
+unknownFacts(BuildContext context) {
+  Navigator.push(context, MaterialPageRoute(
+    builder: (BuildContext context) {
+      return UNknownFacts();
+    }
+  ));
+}
+
+
+Widget _iconBottomBar(Icon icon, double size, BuildContext context) {
   return IconButton(
-    onPressed: () {},
+    onPressed: () {
+      Navigator.push(context, MaterialPageRoute(
+    builder: (BuildContext context) {
+      return UNknownFacts();
+    }
+  ));
+    },
     icon: icon,
     iconSize: size,
   );
