@@ -45,41 +45,39 @@ class AppHome extends StatelessWidget {
                     children: <Widget>[
                       ListTile(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (BuildContext context) => MenuPage()
-                          ));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      MenuPage()));
                         },
-                        title: Text("Tourists Spot",
-                        style: TextStyle(
-                          fontSize: 16
-                        ),
+                        title: Text(
+                          "Tourists Spot",
+                          style: TextStyle(fontSize: 16),
                         ),
                       ),
                       ListTile(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (BuildContext context) => MenuPage()
-                          ));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      MenuPage()));
                         },
-                        title: Text("Police Contact",
-                        style: TextStyle(
-                          fontSize: 16
-                        ),
+                        title: Text(
+                          "Police Contact",
+                          style: TextStyle(fontSize: 16),
                         ),
                       ),
                       ListTile(
                         onTap: () {
-                          // Navigator.push(context, MaterialPageRoute(
-                          //   builder: (BuildContext context) => MenuPage()
-                          // ));
-                          AlertDialog(
-                            title: Text("Kolkata Gudier"),
-                          );
+                         return showDetails(context, 
+                         "Developer Details", 
+                         "This app was made with love by Sounish Nath 😍, buy me a coffee ☕");
                         },
-                        title: Text("Developer",
-                        style: TextStyle(
-                          fontSize: 16
-                        ),
+                        title: Text(
+                          "Developer",
+                          style: TextStyle(fontSize: 16),
                         ),
                       ),
                     ],
@@ -92,6 +90,31 @@ class AppHome extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: _floatingActionButton(context),
         bottomNavigationBar: _bottomAppBar());
+  }
+
+  Future<Widget> showDetails(BuildContext context, String textTitle, String desc) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(textTitle),
+            content: Text(desc),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("More Details"),
+              ),
+              FlatButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("Back"),
+              ),
+            ],
+          );
+        });
   }
 }
 
